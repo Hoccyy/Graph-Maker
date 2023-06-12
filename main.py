@@ -17,4 +17,4 @@ Args:
 Returns:
     1 and error message in the case of failure
 '''
-print(chartFunctions.show_graph([30,30]))
+chartFunctions.show_graph([30,30])
