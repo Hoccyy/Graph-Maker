@@ -1,9 +1,8 @@
 import os
+import numpy as np
 from csv import writer
-from datetime import date
 from datetime import datetime
 import matplotlib.pyplot as plt
-import numpy as np
 from scipy.interpolate import make_interp_spline
 
 '''
@@ -34,11 +33,10 @@ Args:
     chart_file_type (str): Saves the graph in file form of PNG, JPEG, or PDF (Default)
 
 Returns:
-    1 and error message in the case of failure
+    Error message in the event of a failure and an int (1)
 '''
 def show_graph(graph_max_vals: list = [20,20], data_label_x: str = 'Data', data_label_y: str ='Data2', title: str ='Title', x_axis_data: list = [1,2,3,4,5], y_axis_data: list = [1,2,3,6,7], size_of_plots: list = [30], plot_color: list = ['Red'], chart_file_type: str = 'pdf'):
     try:
-        today = date.today()
         filename = datetime.now().strftime('%Y-%m-%d__%H%M%S') + '__Graph.'
         # File logging operation
         row_file = (filename)
@@ -59,12 +57,6 @@ def show_graph(graph_max_vals: list = [20,20], data_label_x: str = 'Data', data_
         X_ = np.linspace(np.array(x_axis_data).min(), np.array(x_axis_data).max(), 500)
         Y_ = X_Y_Spline(X_)
         plt.plot(X_, Y_)
-
-        '''
-        plt.scatter(x= np.array(x_axis_data), y= np.array(y_axis_data), s= size_of_plots, c=plot_color)
-        plt.plot(graph_max_vals[0], graph_max_vals[1])
-        '''
-        
         plt.savefig(filename + chart_file_type)
         plt.show()
         return None
