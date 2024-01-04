@@ -1,7 +1,0 @@
-
-
-        '''
-        plt.scatter(x= np.array(x_axis_data), y= np.array(y_axis_data), s= size_of_plots, c=plot_color)
-        plt.plot(graph_max_vals[0], graph_max_vals[1])
-        '''
-        
